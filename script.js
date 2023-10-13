@@ -49,7 +49,33 @@ function getPlayerChoice() {
     }
 }
 
-function game() {
+const body = document.querySelector('body');
+const container = document.createElement('div');
+container.setAttribute('id', 'container');
+body.appendChild(container);
+
+const choices = document.querySelector('#container');
+const rock = document.createElement('button');
+rock.setAttribute('id', 'rock');
+choices.appendChild(rock);
+const paper = document.createElement('button');
+paper.setAttribute('id', 'paper');
+choices.appendChild(paper);
+const scissors = document.createElement('button');
+scissors.setAttribute('id', 'scissors');
+choices.appendChild(scissors);
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', playRound)
+});
+
+document.querySelector('#container');
+const score = document.createElement('div');
+score.setAttribute('id', 'score');
+
+
+/* function game() {
     let scorePlayer = 0;
     let scoreComputer = 0;
     console.log('Welcome!');
@@ -75,6 +101,7 @@ function game() {
     else {
         console.log("We have a tie!");
     }
-}
+} 
 
 game();
+*/
