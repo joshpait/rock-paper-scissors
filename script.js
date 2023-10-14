@@ -14,9 +14,10 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
+    removePreviousText();
     const p = document.createElement('p');
     if (playerSelection === computerSelection) {
-        p.textContent = `It's a Tie! You both picked ${playerSelection}.`;
+        p.textContent = `It's a tie! You both picked ${playerSelection}.`;
     }
     else if (
         (playerSelection === 'rock' && computerSelection === 'scissors') ||
@@ -24,13 +25,13 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection === 'scissors' && computerSelection === 'paper')
     ) {
         playerScore++;
-        p.textContent = `You Win! ${playerSelection} beats ${computerSelection}.`;
+        p.textContent = `You won this round! ${playerSelection} beats ${computerSelection}.`;
     }
     else {
         computerScore++;
-        p.textContent = `You Lose! ${computerSelection} beats ${playerSelection}.`;
+        p.textContent = `You lost this round! ${computerSelection} beats ${playerSelection}.`;
     }
-    outcomeDiv.appendChild(p);        
+    outcomeDiv.appendChild(p);
 }
 
 function checkWinner(playerScore, computerScore) {
@@ -45,9 +46,16 @@ function checkWinner(playerScore, computerScore) {
     outcomeDiv.appendChild(h2);
 }
 
-function updateScore (playerScore, computerScore) {
+function updateScore(playerScore, computerScore) {
     playerScoreSpan.textContent = `Player Score: ${playerScore}`;
     computerScoreSpan.textContent = `Computer Score: ${computerScore}`;
+}
+
+function removePreviousText() {
+    //Clears previously printed text by removing all child nodes
+    while (outcomeDiv.firstChild) {
+        outcomeDiv.removeChild(outcomeDiv.firstChild);
+    }
 }
 
 rockButton.addEventListener('click', () => {
